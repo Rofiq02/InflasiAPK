@@ -1,0 +1,7 @@
+{
+  "name": "InflasiAPK",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

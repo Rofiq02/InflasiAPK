@@ -1,0 +1,94 @@
+<ion-content>
+    <div class="Latas">
+        <svg version="1.1" id="atas" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+             viewBox="0 0 360 219" enable-background="new 0 0 360 219" xml:space="preserve">
+            <defs>
+              <filter id="Adobe_OpacityMaskFilter" filterUnits="userSpaceOnUse" x="-6.726" y="-4.343" width="370.956" height="223.453">
+                <feColorMatrix  type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 1 0"/>
+              </filter>
+            </defs>
+            <mask maskUnits="userSpaceOnUse" x="-6.726" y="-4.343"  id="SVGID_1_">
+              <g filter="url(#Adobe_OpacityMaskFilter)">
+                <rect x="-0.052" y="0.064" fill="#FFFFFF" width="360.042" height="639.993"/>
+              </g>
+            </mask>
+            <g mask="url(#SVGID_1_)">
+              <path fill="#27AAE1" fill-opacity="0.5" d="M-6.726,4.968c0,0,108.912-9.132,179.517,27.266
+                c49.02,25.271,39.745,101.084,100.688,150.961c44.986,36.818,90.089,35.912,90.089,35.912V-2.348H-6.726V4.968z"/>
+              <path fill="#27AAE1" fill-opacity="0.5" d="M-6.726-2.348c0,0,109.3,8.646,164.943,59.188
+                c55.644,50.542,76.841,119.705,206.013,109.73V-4.343L-6.726-2.348z"/>
+            </g>
+        </svg>
+        <ion-grid class="bps">
+          <ion-row>
+            <ion-col></ion-col>
+            <ion-col></ion-col>
+            <ion-col class="logo">
+                <img src="../assets/imgs/bps.png"/>
+            </ion-col>  
+          </ion-row>
+      </ion-grid>
+    </div>
+    <div class="text">
+      <b>Register</b>
+    </div>
+  <form style="margin-top: 0!important; padding-left:15px; padding-right:5px;" (ngSubmit)="register()" method="post">
+    <ion-item>
+        <ion-label position="floating">Nama</ion-label>
+        <ion-input [(ngModel)]="user.name" name="name"></ion-input>
+    </ion-item>
+    <div style="color: red; padding-top: 0.2rem" *ngIf="validasi && !user.name">nama harus di isi</div>
+  
+    <ion-item>
+      <ion-label position="floating">Alamat</ion-label>
+      <ion-input [(ngModel)]="user.alamat" name="alamat"></ion-input>
+    </ion-item>
+    <div style="color: red; padding-top: 0.2rem" *ngIf="validasi && !user.alamat">alamat harus di isi</div>
+
+    <!-- <ion-item>
+      <ion-label position="floating">Telepon</ion-label>
+      <ion-input [(ngModel)]="user.telp" name="telp"></ion-input>
+    </ion-item>
+    <div style="color: red; padding-top: 0.2rem" *ngIf="validasi && !user.telp">telp harus di isi</div> -->
+  
+    <ion-item>
+      <ion-label position="floating">Email</ion-label>
+      <ion-input type="email" [(ngModel)]="user.email" name="email"></ion-input>
+    </ion-item>
+    <div style="color: red; padding-top: 0.2rem" *ngIf="validasi && !user.email">Email harus diisi</div>
+  
+    <ion-item>
+      <ion-label position="floating">Password</ion-label>
+      <ion-input type="password" [(ngModel)]="user.password" name="password" required minlength="8" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"></ion-input>
+    </ion-item>
+    <div style="color: red; padding-top: 0.2rem" *ngIf="validasi && !user.password">Password minimal 8 character</div>
+    <ion-row>
+        <ion-col></ion-col>
+        <ion-col></ion-col>
+        <ion-col>
+          <ion-button type="submit" class="btn-update"><b>Register</b></ion-button>
+        </ion-col>
+    </ion-row>
+  </form>
+  <div class="Lbawah">
+      <svg version="1.1" id="bawah" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+         viewBox="0 0 360 220" enable-background="new 0 0 360 220" xml:space="preserve">
+        <defs>
+          <filter id="Adobe_OpacityMaskFilter" filterUnits="userSpaceOnUse" x="-8.665" y="-1.53" width="372.943" height="226.774">
+            <feColorMatrix  type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 1 0"/>
+          </filter>
+        </defs>
+        <mask maskUnits="userSpaceOnUse" x="-8.665" y="-1.53" width="372.943" height="226.774" id="SVGID_1_">
+          <g filter="url(#Adobe_OpacityMaskFilter)">
+            <rect x="-0.004" y="-414.763" fill="#FFFFFF" width="360.042" height="639.993"/>
+          </g>
+        </mask>
+        <g mask="url(#SVGID_1_)">
+          <path fill="#27AAE1" fill-opacity="0.8" d="M-8.002-1.53c0,0,81.247,11.14,110.625,78.474
+            c35.108,80.47,63.592,132.34,261.656,133.004v15.297H-7.34L-8.002-1.53z"/>
+          <path fill="#27AAE1" fill-opacity="0.5" d="M363.616,136.795c0,0-156.994,39.901-203.363,42.563
+            c-46.37,2.659-145.733-9.312-168.918-57.195v100.422h372.943L363.616,136.795z"/>
+        </g>
+      </svg>
+  </div>
+</ion-content>  

@@ -1,0 +1,90 @@
+<ion-header>
+    <ion-toolbar color="primary">
+      <ion-buttons slot="start">
+        <ion-back-button></ion-back-button>
+      </ion-buttons>
+      <ion-title>Data Inflasi YoY</ion-title>
+    </ion-toolbar>
+  </ion-header>
+ 
+<ion-content padding>
+    <ion-item>
+        <ion-label></ion-label>
+          <ion-select [(ngModel)]="tahun" (ionChange)="loadYoY()" okText="Okay" cancelText="Cancel">
+              <ion-select-option *ngFor ="let rsThan of tahunan" value="{{ rsThan }}">{{ rsThan }}</ion-select-option>
+          </ion-select>
+    </ion-item>
+    <div *ngIf="cek">
+      <ion-grid>
+          <div class="judul">
+            <ion-row>
+                <ion-col>
+                  Bulan
+                </ion-col>
+                <ion-col>
+                  Tahun
+                </ion-col>
+                <ion-col>
+                  Terhadap
+                </ion-col>
+                <ion-col>
+                  Bulan
+                </ion-col>
+                <ion-col>
+                  Tahun
+                </ion-col>
+                <ion-col>
+                  Besar Inflasi
+                </ion-col>
+            </ion-row>
+          </div>
+        </ion-grid>
+        <ion-grid padding>
+          <ion-row *ngFor = "let rsYoY of yoy">
+              <ion-col>
+                  {{ rsYoY.nama_bulan }}
+              </ion-col>
+              <ion-col>
+                  {{ rsYoY.tahun }}
+              </ion-col>
+              <ion-col>
+                -
+              </ion-col>
+              <ion-col>
+                  {{ rsYoY.nama_bulan }}
+              </ion-col>
+              <ion-col>
+                  {{ rsYoY.tahun2 }}
+              </ion-col>
+              <ion-col>
+                {{ rsYoY.besar_inflasi }}
+              </ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
+      <div *ngIf="!cek">
+            <ion-row>
+                <ion-col>
+                  Bulan
+                </ion-col>
+                <ion-col>
+                  Tahun
+                </ion-col>
+                <ion-col>
+                  Terhadap
+                </ion-col>
+                <ion-col>
+                  Bulan
+                </ion-col>
+                <ion-col>
+                  Tahun
+                </ion-col>
+                <ion-col>
+                  Besar Inflasi
+                </ion-col>
+            </ion-row>
+              <ion-item text-center>
+                <ion-label>No Item</ion-label>
+              </ion-item>
+        </div> 
+</ion-content>

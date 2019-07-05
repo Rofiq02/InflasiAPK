@@ -1,0 +1,58 @@
+<ion-header>
+    <ion-toolbar color="primary">
+      <ion-buttons slot="start">
+        <ion-back-button></ion-back-button>
+      </ion-buttons>
+      <ion-title>Data Inflasi Tahun Kalender</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-label>Tahun</ion-label>
+      <ion-select [(ngModel)]="tahun" (ionChange)="loadKalender()" okText="Okay" cancelText="Cancel">
+          <ion-select-option *ngFor ="let rsThan of tahunan" value="{{ rsThan }}">{{ rsThan }}</ion-select-option>
+      </ion-select>
+</ion-item>
+
+<ion-grid>
+  <div class="judul">
+    <ion-row>
+        <ion-col>
+          Besar Inflasi
+        </ion-col>
+        <ion-col>
+          Bulan
+        </ion-col>
+    </ion-row>
+  </div>
+</ion-grid>
+<div *ngIf="cek">
+  <ion-grid padding>
+    <ion-row *ngFor = "let rsKal of kalender">
+        <ion-col>
+            {{ rsKal.besar_inflasi }}
+        </ion-col>
+        <ion-col>
+            {{ rsKal.nama_bulan }}
+        </ion-col>
+    </ion-row>
+  </ion-grid>
+</div>
+<div *ngIf="!cek">
+    <ion-grid padding>
+        <ion-row>
+            <ion-col>
+                
+            </ion-col>
+            <ion-col>
+                No Item
+            </ion-col>
+            <ion-col>
+
+            </ion-col>
+        </ion-row>
+      </ion-grid>
+</div>
+
+</ion-content>

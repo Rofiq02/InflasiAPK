@@ -1,0 +1,117 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Inflasi Terkini</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <div>
+      <svg version="1.1" id="bg-header" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+       viewBox="0 0 145 80" enable-background="new 0 0 145 80" xml:space="preserve">
+    <path fill="#ED1F24"  d="M120.219,41.562H145V0H0v40.729h21.815
+      c0.583-0.047,1.173-0.072,1.769-0.072c9.227,0,17.101,5.77,20.226,13.896h0.007C48.064,66.283,59.302,74.667,72.5,74.667
+      c12.554,0,23.32-7.592,27.999-18.427c2.834-8.289,10.55-14.299,19.72-14.626V41.562z"/>
+    </svg>
+  </div>
+  <ion-row>
+    <div class="lingkaran">
+      <ion-row>
+        <ion-col>
+
+        </ion-col>
+        <ion-col>
+             <svg version="1.1" id="putar" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+             viewBox="0 0 62 62" enable-background="new 0 0 62 62" xml:space="preserve">
+          <g>
+            <circle fill="rgba(255,255,255,0.5)" cx="30.957" cy="31.042" r="30.543"/>
+            <g>
+              
+                <image overflow="visible" opacity="0.75" xlink:href="F7E8D55.png"  transform="matrix(0.24 0 0 0.24 -2.9639 -3.2725)">
+              </image>
+              <g>
+                <linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="12.6851" y1="12.3755" x2="49.6134" y2="49.3039">
+                  <stop  offset="0" style="stop-color:rgb(255, 255, 255)"/>
+                  <stop  offset="1" style="stop-color:rgb(255, 255, 255)"/>
+                </linearGradient>
+                <circle fill="url(#SVGID_1_)" cx="31.149" cy="30.84" r="26.113"/>
+              </g>
+            </g>
+          </g>
+          </svg>
+        </ion-col>
+        <ion-col>
+
+        </ion-col>
+      </ion-row>
+      </div>
+  </ion-row>
+  <ion-row>
+             <div class="percent">
+                <ion-row *ngFor = "let rsTerkini of terkini">
+                    <ion-col>
+      
+                    </ion-col>
+                      <ion-col>
+                          <b>{{ rsTerkini.besar_inflasi }}%</b>
+                      </ion-col>
+                      <ion-col>
+      
+                      </ion-col>
+                  </ion-row>
+              </div>
+  </ion-row>
+ 
+  <ion-row>
+    <ion-col size="6">
+      <ion-card>
+        <ion-card-header>
+          <ion-card-subtitle>Tahun Kalender</ion-card-subtitle>
+        </ion-card-header>
+      
+        <ion-card-content>
+            <img src="../assets/imgs/1.png" (click)="viewTahun(tk)"/>
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+    <ion-col size="6">
+      <ion-card>
+        <ion-card-header>
+          <ion-card-subtitle>Pengeluaran</ion-card-subtitle>
+        </ion-card-header>
+      
+        <ion-card-content>
+            <img src="../assets/imgs/4.png" (click)="viewPengeluaran(peng)"/>
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+
+  <ion-row>
+    <ion-col size="6">
+      <ion-card>
+        <ion-card-header>
+          <ion-card-subtitle>YoY</ion-card-subtitle>
+        </ion-card-header>
+      
+        <ion-card-content>
+            <img src="../assets/imgs/3.png" (click)="viewYoy(yo)"/>
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+    <ion-col size="6">
+      <ion-card>
+        <ion-card-header>
+          <ion-card-subtitle>Komoditas</ion-card-subtitle>
+        </ion-card-header>
+      
+        <ion-card-content>
+            <img src="../assets/imgs/2.png" (click)="viewKomoditas(komo)"/>
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+
+</ion-content>

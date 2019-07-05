@@ -1,0 +1,69 @@
+<ion-menu *ngIf="profile.login" contentId="content">
+
+  <ion-content>
+
+      <div class="hero">
+        <img src="../assets/imgs/bg-avatar.png"/>
+          <ion-grid class="user">
+              <ion-row style="align-items:center;">
+                <ion-col col-3>
+                </ion-col>
+                <ion-col class="avatar" col-6>
+                  <img src="../assets/imgs/no-avatar.png">
+                </ion-col>
+                <ion-col col-3>
+                </ion-col>
+              </ion-row>
+              <ion-row style="justify-content: center;">
+                <ion-col class="desc" col-8>
+                  <h2>{{  profile.detail.name }}</h2>
+                  <p>{{  profile.detail.email }}</p>
+                </ion-col>
+              </ion-row>
+          </ion-grid>
+        </div>
+
+      <div *ngFor="let p of pages">
+
+        <!-- Standard Menu Item -->
+        <ion-menu-toggle *ngIf="p.url">
+          <ion-item [routerLink]="p.url" routerDirection="root" routerLinkActive="active">
+            <ion-icon [name]="p.icon" slot="start"></ion-icon>
+            <ion-label>
+              {{ p.title }}
+            </ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+        <!-- Item with Children -->
+  
+        <ion-item button *ngIf="p.children?.length > 0" (click)="p.open = !p.open" [class.parent-active]="p.open" detail="false">
+          <ion-icon slot="start" name="arrow-forward" *ngIf="!p.open"></ion-icon>
+          <ion-icon slot="start" name="arrow-down" *ngIf="p.open"></ion-icon>
+          <ion-label>{{ p.title }}</ion-label>
+        </ion-item>
+  
+        <!-- Children List for clicked Item -->
+        <ion-list *ngIf="p.open">
+          <ion-menu-toggle>
+            <ion-item *ngFor="let sub of p.children" class="sub-item" [routerLink]="sub.url" routerDirection="root"
+              routerLinkActive="active">
+              <ion-icon [name]="sub.icon" slot="start"></ion-icon>
+              <ion-label>
+                {{ sub.title }}
+              </ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+        </ion-list>
+  
+      </div>
+  </ion-content>
+
+  <ion-footer>
+    <ion-toolbar>
+      <ion-item (click)="logoutClicked()">Logout</ion-item>
+    </ion-toolbar>
+  </ion-footer>
+
+</ion-menu>
+
+<ion-router-outlet id="content" main></ion-router-outlet>

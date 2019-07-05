@@ -1,0 +1,13 @@
+ion-toolbar.scrollable-segments {
+	ion-segment {
+        overflow-x: scroll;
+        overflow-y: hidden;
+        height: 50px;
+        white-space:nowrap;
+
+	  ion-segment-button.segment-button {
+		display: inline-block;
+		width: auto;
+	  }
+	}
+}

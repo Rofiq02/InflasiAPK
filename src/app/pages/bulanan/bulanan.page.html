@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Data Inflasi Bulanan</ion-title>
+  </ion-toolbar>
+</ion-header>
+ 
+<ion-content>
+    <div class="bgatas">
+        <img src="./assets/imgs/graph.jpg"/>
+    </div>
+
+  <ion-item>
+      <ion-label>Tahun</ion-label>
+        <ion-select [(ngModel)]="tahuna" (ionChange)="loadBulanan()" okText="Okay" cancelText="Cancel">
+            <ion-select-option *ngFor ="let rsThan of tahunan" value="{{ rsThan }}">{{ rsThan }}</ion-select-option>
+        </ion-select>
+  </ion-item>
+
+  <ion-grid>
+    <div class="judul">
+      <ion-row>
+          <ion-col>
+            Besar Inflasi
+          </ion-col>
+          <ion-col>
+            Bulan
+          </ion-col>
+      </ion-row>
+    </div>
+  </ion-grid>
+  <ion-grid padding>
+    <ion-row *ngFor = "let rsBulanan of bulanan">
+        <ion-col>
+            {{ rsBulanan.besar_inflasi }}
+        </ion-col>
+        <ion-col>
+            {{ rsBulanan.nama_bulan }}
+        </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>

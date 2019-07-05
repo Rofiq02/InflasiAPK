@@ -1,0 +1,162 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Akun</ion-title>
+  </ion-toolbar>
+</ion-header>
+ 
+<ion-content class="member" padding>
+      <div class="avatar">
+        <div class="image">
+            <img src="{{ pic }}"/>
+            <!-- <img *ngIf="fileUrl" src="{{fileUrl}}"/> -->
+        </div>
+        <div class="button">
+            <ion-button (click)="presentActionSheet()">
+                <ion-icon slot="icon-only" name="camera"></ion-icon>
+            </ion-button>
+        </div>
+      </div>
+  <p *ngIf="valid==0">Please Enter Valid Value !</p>
+  <!-- <form>
+    <ion-item>
+        <ion-label fixed>Nama</ion-label>
+      <ion-input type="text" [(ngModel)]="name" placeholder="Nama"></ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-label fixed>Jenis Kelamin</ion-label>
+        <ion-select [(ngModel)]="jk">
+          <ion-select-option value="1">Laki-Laki</ion-select-option>
+          <ion-select-option value="2">Perempuan</ion-select-option>
+        </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label fixed>Pekerjaan</ion-label>
+      <ion-input type="text" [(ngModel)]="pekerjaan" placeholder="Pekerjaan"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label fixed>Instansi</ion-label>
+    <ion-input type="text" [(ngModel)]="instansi" placeholder="Instansi"></ion-input>
+</ion-item>
+    <ion-item>
+        <ion-label fixed>Alamat</ion-label>
+        <ion-input type="text" [(ngModel)]="alamat" placeholder="Alamat"></ion-input>
+    </ion-item>  
+    <ion-item>
+        <ion-label fixed>Telepon</ion-label>
+        <ion-input type="text" [(ngModel)]="telp" placeholder="Telepon"></ion-input>
+    </ion-item>                 
+    <button ion-button class="btn-update" outline>UPDATE</button>
+</form>  -->
+
+<form (ngSubmit)="saveMember()" method="post">
+    <ion-grid>
+        <ion-row align-items-end>
+          <ion-col size="1" align-self-bottom>
+            <ion-icon md="md-person" size="small"></ion-icon>
+          </ion-col>
+          <ion-col>
+              <ion-item>
+                  <ion-label position="floating">Nama</ion-label>
+                  <ion-input [(ngModel)]="name" name="name"></ion-input>
+              </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row align-items-end>
+            <ion-col size="1" align-self-bottom>
+              <ion-icon md="md-home" size="small"></ion-icon>
+            </ion-col>
+            <ion-col>
+                <ion-item>
+                    <ion-label position="floating">Alamat</ion-label>
+                    <ion-input [(ngModel)]="alamat" name="alamat"></ion-input>
+                  </ion-item>
+            </ion-col>
+          </ion-row>
+          <ion-row align-items-end>
+              <ion-col size="1" align-self-bottom>
+                <ion-icon md="md-female" size="small"></ion-icon>
+              </ion-col>
+              <ion-col>
+                  <ion-item>
+                      <ion-label position="floating">Jenis Kelamin</ion-label>
+                      <ion-select [(ngModel)]="jk" name="jk">
+                        <ion-select-option value="1">Laki-Laki</ion-select-option>
+                        <ion-select-option value="2">Perempuan</ion-select-option>
+                      </ion-select>
+                    </ion-item>
+              </ion-col>
+            </ion-row>
+            <ion-row align-items-end>
+                <ion-col size="1" align-self-bottom>
+                  <ion-icon md="md-phone-portrait" size="small"></ion-icon>
+                </ion-col>
+                <ion-col>
+                  <ion-item>
+                      <ion-label position="floating">Telepon</ion-label>
+                      <ion-input [(ngModel)]="telp" name="telp"></ion-input>
+                    </ion-item>
+                </ion-col>
+              </ion-row>
+              <ion-row align-items-end>
+                  <ion-col size="1" align-self-bottom>
+                    <ion-icon md="md-briefcase" size="small"></ion-icon>
+                  </ion-col>
+                  <ion-col>
+                      <ion-item>
+                          <ion-label position="floating">Pekerjaan</ion-label>
+                          <ion-input [(ngModel)]="pekerjaan" name="pekerjaan"></ion-input>
+                        </ion-item>
+                  </ion-col>
+                </ion-row>
+                <ion-row align-items-end>
+                    <ion-col size="1" align-self-bottom>
+                      <ion-icon md="md-archive" size="small"></ion-icon>
+                    </ion-col>
+                    <ion-col>
+                      <ion-item>
+                          <ion-label position="floating">Instansi</ion-label>
+                          <ion-input [(ngModel)]="instansi" name="instansi"></ion-input>
+                        </ion-item>
+                    </ion-col>
+                  </ion-row>
+      </ion-grid>
+  <!-- <ion-item>
+      <ion-label position="floating">Nama</ion-label>
+      <ion-input [(ngModel)]="name" name="name"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Alamat</ion-label>
+    <ion-input [(ngModel)]="alamat" name="alamat"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Jenis Kelamin</ion-label>
+    <ion-select [(ngModel)]="jk" name="jk">
+      <ion-select-option value="1">Laki-Laki</ion-select-option>
+      <ion-select-option value="2">Perempuan</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Telepon</ion-label>
+    <ion-input [(ngModel)]="telp" name="telp"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Pekerjaan</ion-label>
+    <ion-input [(ngModel)]="pekerjaan" name="pekerjaan"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Instansi</ion-label>
+    <ion-input [(ngModel)]="instansi" name="instansi"></ion-input>
+  </ion-item> -->
+  <ion-row>
+      <ion-col></ion-col>
+      <ion-col>
+        <ion-button type="submit" class="btn-update"><b>UPDATE</b></ion-button>
+      </ion-col>
+      <ion-col></ion-col>
+  </ion-row>
+</form>
+</ion-content>

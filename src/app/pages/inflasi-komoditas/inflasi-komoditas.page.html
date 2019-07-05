@@ -1,0 +1,58 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Inflasi Komoditas</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+      <div>
+          <svg version="1.1" id="curve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+           viewBox="0 0 1000 240" enable-background="new 0 0 1000 240" xml:space="preserve">
+       <path fill="#2A3F1B" d="M0,48.768c0,0,147,288.94,462,139.498
+         c300.175-142.409,225-115.681,545-44.23V0H0V48.768z"/>
+       </svg>
+      </div>
+    <ion-item>
+        <ion-label>Bulan</ion-label>
+        <ion-select [(ngModel)]="kd_bulan" (ionChange)="loadKomoditas()" okText="Okay" cancelText="Cancel">
+          <ion-select-option value="1">Januari</ion-select-option>
+          <ion-select-option value="2">Februari</ion-select-option>
+          <ion-select-option value="3">Maret</ion-select-option>
+          <ion-select-option value="4">April</ion-select-option>
+          <ion-select-option value="5">Mei</ion-select-option>
+          <ion-select-option value="6">Juni</ion-select-option>
+          <ion-select-option value="7">Juli</ion-select-option>
+          <ion-select-option value="8">Agustus</ion-select-option>
+          <ion-select-option value="9">September</ion-select-option>
+          <ion-select-option value="10">Oktober</ion-select-option>
+          <ion-select-option value="11">November</ion-select-option>
+          <ion-select-option value="12">Desember</ion-select-option>
+        </ion-select>
+        <ion-label>Tahun</ion-label>
+        <ion-select *ngFor ="let rsThn of tahunn" [(ngModel)]="tahun" (ionChange)="loadKomoditas()" okText="Okay" cancelText="Cancel">
+          <ion-select-option value="{{ rsThn }}">{{ rsThn }}</ion-select-option>
+        </ion-select>
+      </ion-item>
+<div *ngIf="cek">
+  <ion-card>
+    <ion-item>
+      <ion-label>Nama Item</ion-label><ion-label>Besar Inflasi</ion-label>
+    </ion-item>
+    <ion-item *ngFor ="let rsIntem of inflasi_komoditas">
+      <ion-label>{{ rsIntem.nama_item }}</ion-label><ion-label>{{ rsIntem.besar_inflasi }}%</ion-label>
+    </ion-item>
+  </ion-card>
+</div>
+<div *ngIf="!cek">
+  <ion-card>
+    <ion-item>
+        <ion-label>Nama Item</ion-label><ion-label>Besar Inflasi</ion-label>
+      </ion-item>
+    <ion-item text-center>
+      <ion-label>No Item</ion-label>
+    </ion-item>
+  </ion-card>
+</div> 
+</ion-content>
