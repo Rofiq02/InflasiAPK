@@ -1,5 +1,24 @@
-.bgatas img{
+.bgatas{
+    position: relative;
+} img{
     width: 100%;
     height:200px;
-    margin: 0 !important;
+    //margin: 0 !important;
 }
+
+.bg-biru{
+    position: absolute;
+    top: 0%;
+    width: 100%;
+    height: 200px;
+    margin: 0 !important;
+    padding: 0 !important;
+    #biru{
+        fill : #3880ff !important;
+        opacity: 0.9;
+    }
+}
+
+.header-md::after{
+        display: none;
+    }

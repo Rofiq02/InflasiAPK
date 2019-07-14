@@ -8,57 +8,39 @@
   </ion-header>
 
 <ion-content>
-    <ion-item>
-        <ion-label>Tahun</ion-label>
-          <ion-select [(ngModel)]="tahun" (ionChange)="loadKategori()" okText="Okay" cancelText="Cancel">
-              <ion-select-option *ngFor ="let rsThan of tahunan" value="{{ rsThan }}">{{ rsThan }}</ion-select-option>
-          </ion-select>
-    </ion-item>
-    
-    <ion-grid>
-      <div class="judul">
-        <ion-row>
-          <ion-col>
-            Kategori
-          </ion-col>
-            <ion-col>
-              Besar Inflasi
-            </ion-col>
-            <ion-col>
-              Bulan
-            </ion-col>
-        </ion-row>
+    <div class="hero">
+        <img src="../assets/imgs/bg-avatar.png"/>
+    </div>
+    <ion-row>
+      <div class="csstahun">
+        <ion-select [(ngModel)]="tahun" (ionChange)="loadKategori()" okText="Okay" cancelText="Cancel">
+            <ion-select-option *ngFor ="let rsThan of tahunan" value="{{ rsThan }}">{{ rsThan }}</ion-select-option>
+        </ion-select>
       </div>
-    </ion-grid>
+    </ion-row>
     <div *ngIf="cek">
       <ion-grid padding>
-        <ion-row *ngFor = "let rsKal of kategori">
-          <ion-col>
-            {{ rsKal.nama_kategori }}
-          </ion-col>
-            <ion-col>
-                {{ rsKal.nilai_inflasi }}
-            </ion-col>
-            <ion-col>
-                {{ rsKal.nama_bulan }}
-            </ion-col>
-        </ion-row>
+        <ion-item *ngFor = "let rsKal of kategori">
+              <ion-label>
+                <p>{{ rsKal.nama_bulan }}</p> 
+                {{ rsKal.nama_kategori }}
+              </ion-label>
+            <div class="orange">
+                <ion-label>{{ rsKal.nilai_inflasi }}%</ion-label>
+            </div>
+          </ion-item>
       </ion-grid>
     </div>
     <div *ngIf="!cek">
         <ion-grid padding>
-            <ion-row>
-                <ion-col>
-                    
-                </ion-col>
-                <ion-col>
-                    No Item
-                </ion-col>
-                <ion-col>
-    
-                </ion-col>
-            </ion-row>
-          </ion-grid>
+            <div class="tidakisi">
+                <ion-item>
+                    <ion-label></ion-label>
+                    <ion-label>No Item</ion-label>
+                    <ion-label></ion-label>
+                </ion-item>
+            </div>
+        </ion-grid>
     </div>
     
 </ion-content>

@@ -26,7 +26,7 @@ export class LoginPage implements OnInit {
     private modalController: ModalController,
     private navCtrl: NavController,
     public http: HttpClient,
-    public loading: LoadingController, 
+    public load: LoadingController, 
     public events : Events,
     public profile : ProfileService,
     public router: Router,
@@ -62,11 +62,18 @@ export class LoginPage implements OnInit {
   
       let url : any = this.path+'/mobile/login';
       
+      let loading = await this.load.create({
+        //message: "Tunggu sebentar..",
+        spinner: "bubbles",
+        cssClass: 'loading-wrapper',
+      });
+      loading.present();
       
       await this.http.post(url, data, headers)
       .subscribe((res : any) =>
         {
           
+          loading.dismiss(); //Menghilankan loading
   
           // melakukan cek berhasil atau tidak saat registrasi
           if(res.type=="success"){
@@ -92,6 +99,7 @@ export class LoginPage implements OnInit {
         },
         (error : any) =>
         {
+          loading.dismiss();
           console.log(error);
           console.log('Something went wrong!');
         });
@@ -101,7 +109,8 @@ export class LoginPage implements OnInit {
     // }
   }
 
-  goToTestPage() {
-    this.router.navigateByUrl('/register');
-  }
+    register() {
+      this.router.navigateByUrl('/menu/register');
+    }
+
 }

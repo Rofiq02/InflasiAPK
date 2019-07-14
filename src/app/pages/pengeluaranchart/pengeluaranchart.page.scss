@@ -1,0 +1,35 @@
+.hero{
+    img{
+        width: 100%;
+        height: 100px;
+        position: relative;
+    }
+}
+
+.csstahun{
+    position:absolute;
+    top: 8%;
+    right: 10%;
+    color: #fff;
+}
+
+.kecil{
+    color: #17a05d;
+}
+
+.kecil2{
+    white-space:none !important;
+}
+
+.orange{
+    color:#4a8af4;
+    right: 10%;
+}
+
+.header-md::after{
+    display: none;
+    }
+
+    ion-content ion-grid ion-item ion-label{
+        white-space: none !important;  
+    }

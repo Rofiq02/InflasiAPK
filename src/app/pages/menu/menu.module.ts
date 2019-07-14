@@ -77,6 +77,10 @@ const routes: Routes = [
         path: 'bulanan',
         loadChildren: '../bulanan/bulanan.module#BulananPageModule'
       },
+      {
+        path: 'register',
+        loadChildren: '../register/register.module#RegisterPageModule'
+      }
     ],
   }
 ];

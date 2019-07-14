@@ -24,6 +24,7 @@
     "@ionic-native/camera": "^5.6.0",
     "@ionic-native/core": "^5.0.0",
     "@ionic-native/crop": "^5.9.0",
+    "@ionic-native/fcm": "^5.10.0",
     "@ionic-native/file": "^5.9.0",
     "@ionic-native/file-transfer": "^5.9.0",
     "@ionic-native/image-picker": "^5.9.0",

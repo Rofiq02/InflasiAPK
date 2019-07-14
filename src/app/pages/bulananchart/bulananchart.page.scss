@@ -1,36 +1,175 @@
-.bgatas img{
+.graphic img{
     width: 100%;
-    height:200px;
-    margin: 0 !important;
+    position: relative;
+    margin-top: 12px;
 }
 
+        #biru {
+            position: absolute;
+            top: 0%;
+            margin: 0!important;
+        
+                path{
+                    width: 100%; 
+                }
+        }   
+
+        // #bg-pojokan{
+        //     position: absolute;
+        //     top: 0%;
+        //     // right: 0%;
+
+        //     path{
+        //         width: 100%;
+        //         fill: black;
+        //     }
+        // }
+   
+
+
 .graph1{
+    padding: 2%;
+    top: 0%;
+    position: absolute;
     #graph{
-
-    }
-
-    .percent{
-        position: absolute;
-        left: 15%;
-        top: 37%;
         width: 100%;
-        font-size: 30px;
-        color:rgb(0, 0, 0);
         
     }
 }
 
+.percent{
+    position: absolute;
+    left: 14%;
+    top: 11%;
+    width: 100%;
+    font-size: 30px;
+    color:#fff;
+    
+}
+
+.test{
+    position: absolute;
+    top: 61%;
+    // font-size: 10px;
+    // color: #fff;
+    left: 5%;
+
+    #ling{
+        width: 10px;
+        path{
+            fill: #fff;
+        }
+    }
+    .go{
+        font-size: 11px;
+        color: #fff;
+        float: right;
+        padding-left: 0px;
+        margin-right: 0px !important;
+        padding-right: 0px !important;
+        font-weight: bold;
+    }
+    .subgo{
+        font-size: 12px;
+        color: #051a31;
+        // float: right;
+         padding-left: 25px;
+         font-weight: bold;
+    }
+}
+
+// .testi{
+//     position: absolute;
+//     bottom: 0%;
+//     // font-size: 10px;
+//     // color: #fff;
+//     left: 5%;
+
+//     #lingk{
+//         width: 10px;
+//         path{
+//             fill: #fff;
+//         }
+//     }
+   
+// }
+
 .graph2{
+    position: absolute;
+    left: 0;
+    top: 50%;
     #circle{
-        width : 140px;
+        width: 100%;
     }
 
-    .percent2{
-        position: absolute;
-        right: 25%;
-        top: 39%;
-        width: 100%;
-        font-size: 25px;
-        color:rgb(0, 0, 0);
+    .going{
+        font-size: 15px;
+        color: #037acc;
+        //float: right;
+        padding-left: 0px;
+        margin-right: 0px !important;
+        padding-right: 0px !important;
+        font-weight: bold;
+        position : absolute;
+        bottom : 0px;
     }
 } 
+
+.percent2{
+    position: absolute;
+    left: 6% !important;
+    top: 58%;
+    width: 100%;
+    font-size: 30px;
+    color:#fff;
+}
+
+.bawah{
+    #bawahgan {
+        width: 100%;
+        position: fixed;
+        bottom: 0px;
+    }
+}
+
+    #desain_bg{
+        width:80%;
+        position: absolute;
+        right: 0%;
+        top: 7%;
+        path{
+            fill : #fff;
+        }
+    }
+
+    #desain_bg2{
+        width:70%;
+        position: absolute;
+        left: 0%;
+        bottom: 0;
+        path{
+            fill : #fff;
+        }
+    }
+
+    p{
+        position: absolute;
+        bottom: 15%;
+        padding-left: 3%;
+        color: #037acc;
+        font-weight: bold;
+    }
+
+
+ion-button{
+    position: absolute;
+    top: 0%;
+    right: 0%;  
+    // padding-left: 35px;
+    --box-shadow: none;
+    z-index: 99999999;
+}
+
+.header-md::after{
+        display: none;
+    }

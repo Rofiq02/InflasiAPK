@@ -56,13 +56,15 @@
         </ion-list>
   
       </div>
-  </ion-content>
 
-  <ion-footer>
-    <ion-toolbar>
-      <ion-item (click)="logoutClicked()">Logout</ion-item>
-    </ion-toolbar>
-  </ion-footer>
+      <div class="keluar">
+        <ion-item>
+            <ion-icon md="md-log-out"></ion-icon>
+            <ion-label class="keluar2" (click)="logoutClicked()">Logout</ion-label>
+        </ion-item>
+      </div>
+  </ion-content>
+      
 
 </ion-menu>
 

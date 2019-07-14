@@ -15,7 +15,7 @@ export class RegisterPage implements OnInit {
   path : any;
   name: any;
   alamat:any;
-  telp:any;
+  pekerjaan:  any;
   email:any;
   password:any;
   user: any=[];
@@ -50,6 +50,9 @@ export class RegisterPage implements OnInit {
       // alert('alamat di isi')
       return;
     }
+    if(!this.user.pekerjaan){
+      return;
+    }
     // if(!this.user.telp){
     //   return;
     // }
@@ -64,7 +67,7 @@ export class RegisterPage implements OnInit {
     let data =new FormData();
     data.append("name",this.user.name);
     data.append("alamat",this.user.alamat);
-    // data.append("telp",this.user.telp);
+    data.append("pekerjaan",this.user.pekerjaan);
     data.append("email",this.user.email);
     data.append("password",this.user.password);
     
@@ -75,16 +78,17 @@ export class RegisterPage implements OnInit {
      
       let url : any = this.path+'/mobile/register';
   
-      let load = this.loading.create({ //Declaraci Animasi Please wait
-        //content: 'Please Wait',
-        spinner : 'crescent'
+      let loading = await this.loading.create({
+        //message: "Tunggu sebentar..",
+        spinner: "bubbles",
+        translucent: true,
       });
-      //load.present();
+      loading.present();
  
       await this.http.post(url, data, headers)
       .subscribe((res : any) =>
         {
-          //load.dismiss(); //menghilangkan login
+          loading.dismiss(); //menghilangkan login
   
           // melakukan cek berhasil atau tidak saat registrasi
           if(res.type=="success"){
@@ -95,7 +99,7 @@ export class RegisterPage implements OnInit {
         },
         (error : any) =>
         {
-          //load.dismiss(); // menghilangkan loading
+          loading.dismiss(); // menghilangkan loading
           console.log(error);
           console.log('Something went wrong!');
         });

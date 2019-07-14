@@ -1,11 +1,14 @@
-.Latas{
-    #atas{
-        width : 100%;
-        position : relative;
-    }
+
+       #bg{
+            width: 100%;
+            height: 90%;
+            position: relative;
+            
+        }
+    
     .bps{
         position: absolute;
-        top: 2%;
+        top: 4%;
         left: 0;
         width: 100%;
         z-index: 99;
@@ -14,7 +17,6 @@
         width: 100%;
     }
 
-} 
 
 ion-button.btn-update {
     font-size: 20px;
@@ -25,31 +27,46 @@ ion-button.btn-update {
     // color : #3cb2e4 !important;
 }
 
-.Lbawah #bawah{
-    width: 100%;
-    position: fixed;
-    bottom: 0px;
-}
+// .Lbawah #bawah{
+//     width: 100%;
+//     position: fixed;
+//     bottom: 0px;
+// }
 
 .text{
-    position: absolute;
+    
     font-size:35px;
-    top: 20%;
-    margin-left: 30px;
-    color: #3cb2e4;
+    text-align: center;
+    color: #fff;
+    top: 15%;
+    //margin-bottom: 20px;
     
 }
 
 .geser{
+    z-index: 99999999;
     position: absolute;
     font-size: 13px;
     right: 10%;
     .account{
-        color:#e77817;
+        color:#fff;
     }
     .regis{
         margin-left:4px;
-        color: #3cb2e4;
+        color: #fff;
     }
 }
+
+ion-content {
+    --ion-background-color: #3880ff;
+    opacity: 0.9;
+}
+
+ion-item{
+    color: #fff;
+}
+
+
+
+
     

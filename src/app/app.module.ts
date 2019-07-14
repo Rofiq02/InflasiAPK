@@ -19,6 +19,9 @@ import { RegisterPage } from './pages/register/register.page';
 
 import { ProfileService } from "./services/profile.service";
 
+//Notifikasi
+import { FCM } from '@ionic-native/fcm/ngx';
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -41,6 +44,7 @@ import { ProfileService } from "./services/profile.service";
   providers: [
     StatusBar,
     SplashScreen,
+    FCM,
     Camera,
     ProfileService,
     ImagePicker,

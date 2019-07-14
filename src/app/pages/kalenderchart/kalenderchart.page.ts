@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-//import { NavController, NavParams } from '@ionic/angular';
+import { NavController, LoadingController, NavParams } from '@ionic/angular';
 import { Observable, of, throwError } from 'rxjs';
 
 
@@ -23,7 +23,8 @@ export class KalenderchartPage implements OnInit {
 
   constructor(
     public router: Router,
-    private http : HttpClient
+    private http : HttpClient,
+    public load: LoadingController, 
     ) { 
       this.path = localStorage.getItem('path');
       this.tahun = new Date().getFullYear().toString()
@@ -36,7 +37,14 @@ export class KalenderchartPage implements OnInit {
     async loadKalender(){
       let data : Observable<any>;
       data = await this.http.get(this.path+'/mobile/get_kalender/'+this.tahun);
+      let loading = await this.load.create({
+        //message: "Tunggu sebentar..",
+        spinner: "bubbles",
+        cssClass: 'loading-wrapper',
+      });
+      loading.present();
       data.subscribe(res =>{
+          loading.dismiss();
         this.kalender = res;
         res.length > 0 ? this.cek=true : this.cek=false;
       });

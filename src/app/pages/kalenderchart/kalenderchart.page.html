@@ -8,14 +8,31 @@
   </ion-header>
 
 <ion-content>
-  <ion-item>
-    <ion-label>Tahun</ion-label>
+    <div class="bgatas">
+        <svg version="1.1" id="atas" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+         viewBox="0 0 180 75" enable-background="new 0 0 180 75" xml:space="preserve">
+        <g>
+          <path fill="#F17F70" d="M0,75c3.563-12.643,7.593-39.061,16.269-49.237c1.855-2.176,4.034-4.212,6.741-5.132
+            c6.241-2.12,12.945,2.423,16.52,7.961c3.575,5.537,5.247,12.134,8.834,17.666c1.761,2.715,4.19,5.27,7.359,5.934
+            c15.637,3.27,18.712-36.592,22.897-44.845c0.949-1.872,2.227-3.646,4.015-4.747c11.93-7.346,18.825,12.107,19.526,20.671
+            c0.346,4.208,0.391,8.5,1.658,12.527c1.27,4.027,4.043,7.865,8.078,9.113c7.068,2.186,12-4.287,14.547-9.946
+            c1.67-3.711,2.857-7.662,4.99-11.136c1.939-3.157,4.633-6.113,8.73-5.075c2.416,0.611,4.4,2.324,6.047,4.194
+            c6.809,7.732,9.031,18.322,12.199,28.123c3.002,9.279,8.238,19.498,18.328,22.732"/>
+          <path fill="#3880ff" d="M0.436,75c5.13-14.133,11.331-31.18,24.777-39.228c9.972-5.968,17.194,2.472,21.639,10.992
+            c3.766,7.217,9.806,21.492,20.177,19.563c2.815-0.525,5.108-2.607,6.967-4.84c7.243-8.693,9.997-20.994,16.514-30.326
+            c2.844-4.073,6.68-8.962,11.9-9.593c16.076-1.942,20.547,28.231,25.938,38.157c1.73,3.186,4.217,6.322,7.695,7.08
+            c6.564,1.432,10.875-5.115,14.215-9.666c1.771-2.414,4.115-4.727,7.045-5.014c2.549-0.252,4.984,1.092,7.047,2.648
+            c6.572,4.959,10.803,13.355,15.211,20.227"/>
+        </g>
+        <rect opacity="0.9" fill="#3880ff" width="100%" />
+      </svg>
+  </div>
+  <div class="csstahun">
       <ion-select [(ngModel)]="tahun" (ionChange)="loadKalender()" okText="Okay" cancelText="Cancel">
           <ion-select-option *ngFor ="let rsThan of tahunan" value="{{ rsThan }}">{{ rsThan }}</ion-select-option>
       </ion-select>
-</ion-item>
+  </div>
 
-<ion-grid>
   <div class="judul">
     <ion-row>
         <ion-col>
@@ -26,33 +43,31 @@
         </ion-col>
     </ion-row>
   </div>
-</ion-grid>
+  
 <div *ngIf="cek">
   <ion-grid padding>
-    <ion-row *ngFor = "let rsKal of kalender">
-        <ion-col>
-            {{ rsKal.besar_inflasi }}
-        </ion-col>
-        <ion-col>
-            {{ rsKal.nama_bulan }}
-        </ion-col>
-    </ion-row>
+      <div class="isi">
+        <ion-item *ngFor = "let rsKal of kalender">
+           <ion-label>
+                {{ rsKal.besar_inflasi }}
+            </ion-label>
+           <ion-label>
+              {{ rsKal.nama_bulan }}
+           </ion-label>
+          </ion-item>
+      </div>
   </ion-grid>
 </div>
 <div *ngIf="!cek">
     <ion-grid padding>
-        <ion-row>
-            <ion-col>
-                
-            </ion-col>
-            <ion-col>
-                No Item
-            </ion-col>
-            <ion-col>
-
-            </ion-col>
-        </ion-row>
-      </ion-grid>
+        <div class="tidakisi">
+            <ion-item>
+                <ion-label></ion-label>
+                <ion-label>No Item</ion-label>
+                <ion-label></ion-label>
+            </ion-item>
+        </div>
+    </ion-grid>
 </div>
 
 </ion-content>

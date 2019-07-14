@@ -1,90 +1,173 @@
 <ion-header>
     <ion-toolbar color="primary">
       <ion-buttons slot="start">
-        <ion-back-button></ion-back-button>
+        <ion-menu-button></ion-menu-button>
       </ion-buttons>
       <ion-title>Data Inflasi YoY</ion-title>
     </ion-toolbar>
   </ion-header>
  
-<ion-content padding>
-    <ion-item>
-        <ion-label></ion-label>
-          <ion-select [(ngModel)]="tahun" (ionChange)="loadYoY()" okText="Okay" cancelText="Cancel">
-              <ion-select-option *ngFor ="let rsThan of tahunan" value="{{ rsThan }}">{{ rsThan }}</ion-select-option>
-          </ion-select>
-    </ion-item>
-    <div *ngIf="cek">
-      <ion-grid>
-          <div class="judul">
+<ion-content>
+    <div class="bgatas">
+        <img src="./assets/imgs/graph.jpg"/>
+    </div>
+    <div class="bg-biru">
+        <svg version="1.1" id="biru"  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+         viewBox="0 0 210 200" enable-background="new 0 0 210 200" xml:space="preserve">
+          <rect fill="#3880ff" width="210" height="115"/>
+        </svg>
+    </div>
+    <!-- <ion-row>
+        <div class="graph">
+          <ion-row>
+              <ion-col>
+                  <svg version="1.1" (click)="viewSekarang(sk)" id="circle" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                    viewBox="0 0 155 155" enable-background="new 0 0 155 155" xml:space="preserve">
+                    <g>
+                      <linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="38.7051" y1="144.6445" x2="116.2521" y2="10.3292">
+                        <stop  offset="0" style="stop-color:#007acc"/>
+                        <stop  offset="1" style="stop-color:#007acc"/>
+                      </linearGradient>
+                      <path fill="url(#SVGID_1_)" d="M77.477,155c-20.703,0-40.169-8.063-54.811-22.703c-30.222-30.223-30.222-79.398,0-109.621
+                        C37.308,8.035,56.774-0.027,77.477-0.027c20.705,0,40.169,8.063,54.812,22.702c30.221,30.224,30.221,79.399,0,109.622
+                        C117.646,146.938,98.182,155,77.477,155z"/>
+                      <g>
+                        <g>
+                          <path fill="#3880ff" d="M77.477,139.496c-16.563,0-32.136-6.449-43.849-18.162c-24.178-24.178-24.178-63.518,0-87.696
+                            c11.713-11.712,27.285-18.162,43.849-18.162c16.564,0,32.136,6.45,43.849,18.162c24.178,24.179,24.178,63.519,0,87.696
+                            C109.613,133.047,94.041,139.496,77.477,139.496z"/>
+                        </g>
+                      </g>
+                      <g>
+                        <g>
+                          <linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="30.9907" y1="77.4863" x2="123.9648" y2="77.4863">
+                            <stop  offset="0" style="stop-color:#ffffff"/>
+                            <stop  offset="1" style="stop-color:#ffffff"/>
+                          </linearGradient>
+                          <path fill="url(#SVGID_2_)" d="M77.477,123.994c-12.422,0-24.102-4.838-32.887-13.623c-18.133-18.133-18.133-47.638,0-65.771
+                            c8.785-8.784,20.465-13.621,32.887-13.621c12.423,0,24.103,4.837,32.886,13.622c18.135,18.133,18.135,47.638,0,65.772
+                            C101.58,119.156,89.9,123.994,77.477,123.994z"/>
+                        </g>
+                      </g>
+                    </g>
+                    <g>
+                    </g>
+                    </svg>
+              </ion-col>
+              <ion-col>
+                  <div *ngIf="cekin" class="testi">
+                      <svg version="1.1" id="lingk" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                            viewBox="0 0 6 6" enable-background="new 0 0 6 6" xml:space="preserve">
+                        <circle fill="#037acc" cx="3" cy="3" r="2.963"/>
+                      </svg>
+                      <div class="going">Inflasi YoY Saat Ini</div>
+                  </div>
+              </ion-col>
+          </ion-row> -->
+          <ion-row>
+              <div class="graph1">
+                <ion-row>
+                  <ion-col>
+                      <svg version="1.1" id="circle" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                    viewBox="0 0 155 155" enable-background="new 0 0 155 155" xml:space="preserve">
+                    <g>
+                      <linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="38.7051" y1="144.6445" x2="116.2521" y2="10.3292">
+                        <stop  offset="0" style="stop-color:#007acc"/>
+                        <stop  offset="1" style="stop-color:#007acc"/>
+                      </linearGradient>
+                      <path fill="url(#SVGID_1_)" d="M77.477,155c-20.703,0-40.169-8.063-54.811-22.703c-30.222-30.223-30.222-79.398,0-109.621
+                        C37.308,8.035,56.774-0.027,77.477-0.027c20.705,0,40.169,8.063,54.812,22.702c30.221,30.224,30.221,79.399,0,109.622
+                        C117.646,146.938,98.182,155,77.477,155z"/>
+                      <g>
+                        <g>
+                          <path fill="#3880ff" d="M77.477,139.496c-16.563,0-32.136-6.449-43.849-18.162c-24.178-24.178-24.178-63.518,0-87.696
+                            c11.713-11.712,27.285-18.162,43.849-18.162c16.564,0,32.136,6.45,43.849,18.162c24.178,24.179,24.178,63.519,0,87.696
+                            C109.613,133.047,94.041,139.496,77.477,139.496z"/>
+                        </g>
+                      </g>
+                      <g>
+                        <g>
+                          <linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="30.9907" y1="77.4863" x2="123.9648" y2="77.4863">
+                            <stop  offset="0" style="stop-color:#ffffff"/>
+                            <stop  offset="1" style="stop-color:#ffffff"/>
+                          </linearGradient>
+                          <path fill="url(#SVGID_2_)" d="M77.477,123.994c-12.422,0-24.102-4.838-32.887-13.623c-18.133-18.133-18.133-47.638,0-65.771
+                            c8.785-8.784,20.465-13.621,32.887-13.621c12.423,0,24.103,4.837,32.886,13.622c18.135,18.133,18.135,47.638,0,65.772
+                            C101.58,119.156,89.9,123.994,77.477,123.994z"/>
+                        </g>
+                      </g>
+                    </g>
+                    <g>
+                    </g>
+                    </svg>
+                  </ion-col>
+                      <ion-col>
+                            <p>Inflasi YoY saat ini</p>
+                      </ion-col>
+                </ion-row>
+              </div>
+          </ion-row>
+          <ion-row>
+              <div class="percent">
+                 <ion-row *ngFor = "let rsTerkini of yoysekarang">
+                     <ion-col>
+                        <b (click)="viewSekarang(sk)">{{ rsTerkini.besar_inflasi }}%</b>
+                     </ion-col>
+                       <ion-col>
+                        
+                       </ion-col>
+                       <ion-col>
+       
+                       </ion-col>
+                   </ion-row>
+               </div>
+          </ion-row>
+        <div class="csstahun">
+            <ion-select [(ngModel)]="tahun" (ionChange)="loadYoY()" okText="Okay" cancelText="Cancel">
+                <ion-select-option *ngFor ="let rsThan of tahunan" value="{{ rsThan }}">{{ rsThan }}</ion-select-option>
+            </ion-select>
+        </div>
+        <div>
+          <svg version="1.1" id="bg_pojok" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+             viewBox="0 0 160 180" enable-background="new 0 0 160 180" xml:space="preserve">
+            <circle opacity="0.1" fill="#fff" cx="109.89" cy="70.109" r="109.89"/>
+          </svg>
+        </div>
+        
+        <div class="judul">
             <ion-row>
                 <ion-col>
-                  Bulan
-                </ion-col>
-                <ion-col>
                   Tahun
-                </ion-col>
-                <ion-col>
-                  Terhadap
                 </ion-col>
                 <ion-col>
                   Bulan
                 </ion-col>
-                <ion-col>
-                  Tahun
-                </ion-col>
-                <ion-col>
+                <ion-col clas="jbesar">
                   Besar Inflasi
                 </ion-col>
             </ion-row>
           </div>
-        </ion-grid>
-        <ion-grid padding>
-          <ion-row *ngFor = "let rsYoY of yoy">
-              <ion-col>
-                  {{ rsYoY.nama_bulan }}
-              </ion-col>
-              <ion-col>
-                  {{ rsYoY.tahun }}
-              </ion-col>
-              <ion-col>
-                -
-              </ion-col>
-              <ion-col>
-                  {{ rsYoY.nama_bulan }}
-              </ion-col>
-              <ion-col>
-                  {{ rsYoY.tahun2 }}
-              </ion-col>
-              <ion-col>
-                {{ rsYoY.besar_inflasi }}
-              </ion-col>
-          </ion-row>
-        </ion-grid>
-      </div>
-      <div *ngIf="!cek">
-            <ion-row>
-                <ion-col>
-                  Bulan
-                </ion-col>
-                <ion-col>
-                  Tahun
-                </ion-col>
-                <ion-col>
-                  Terhadap
-                </ion-col>
-                <ion-col>
-                  Bulan
-                </ion-col>
-                <ion-col>
-                  Tahun
-                </ion-col>
-                <ion-col>
-                  Besar Inflasi
-                </ion-col>
-            </ion-row>
-              <ion-item text-center>
-                <ion-label>No Item</ion-label>
-              </ion-item>
-        </div> 
+    
+          <div *ngIf="cek">
+              <ion-grid padding>
+                <div class="isi">
+                    <ion-item *ngFor ="let rsYoY of yoy">
+                        <ion-label class="tahun">{{ rsYoY.tahun }} -  {{ rsYoY.tahun2 }}</ion-label>
+                        <ion-label class="bln">{{ rsYoY.nama_bulan }}</ion-label>
+                        <ion-label class="bsr">{{ rsYoY.besar_inflasi }}%</ion-label>
+                      </ion-item>
+                </div>
+              </ion-grid>
+            </div>
+            <div *ngIf="!cek">
+                <ion-grid padding>
+                    <div class="tidakisi">
+                        <ion-item>
+                            <ion-label></ion-label>
+                            <ion-label>No Item</ion-label>
+                            <ion-label></ion-label>
+                        </ion-item>
+                    </div>
+                </ion-grid>
+            </div>
 </ion-content>

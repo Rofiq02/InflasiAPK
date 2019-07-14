@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { NavController, Platform, Events, MenuController } from '@ionic/angular';
 import { LoginPage } from '../login/login.page';
 import { Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 import { ProfileService } from "./../../services/profile.service";
 
@@ -29,7 +30,7 @@ export class MenuPage implements OnInit {
         },
         {
           title: 'YoY',
-          url: '/menu/yoychart',
+          url: '/menu/yo-y',
           icon: 'pulse'
         },
         {
@@ -54,11 +55,11 @@ export class MenuPage implements OnInit {
       url: '/menu/akun',
       icon: 'person'
     },
-    {
-      title: 'Tentang',
-      url: '/menu/tentang',
-      icon: 'information-circle'
-    }
+    // {
+    //   title: 'Tentang',
+    //   url: '/menu/tentang',
+    //   icon: 'information-circle'
+    // }
 
   ];
 
@@ -66,7 +67,8 @@ export class MenuPage implements OnInit {
     private router: Router,
     public menuCtrl: MenuController, 
     public profile: ProfileService,
-    public events : Events) { 
+    public events : Events,
+    private route: ActivatedRoute) { 
   
 
   }

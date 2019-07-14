@@ -8,138 +8,265 @@
 </ion-header>
 
 <ion-content>
-  <div class="bgatas">
-    <img src="./assets/imgs/graph.jpg"/>
-</div>
-
-<ion-row>
-  <ion-col>
-    <div class="graph1">
-      <svg version="1.1" id="graph" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-            width="167px" height="167px" viewBox="0 0 167 167" enable-background="new 0 0 167 167" xml:space="preserve">
-          <g>
-            <circle fill="#E7E7E7" cx="82.377" cy="84.771" r="44.948"/>
-            <g>
-              <path fill="#E7E7E7" d="M83.494,137.279c-13.774,0-27.546-5.242-38.032-15.727c-20.97-20.969-20.97-55.091,0-76.062
-                c20.969-20.97,55.09-20.971,76.062,0c20.97,20.97,20.97,55.093,0,76.062C111.039,132.037,97.267,137.279,83.494,137.279z
-                M83.494,32.976c-12.952,0-25.899,4.928-35.759,14.787c-19.717,19.717-19.717,51.799,0,71.516
-                c19.716,19.717,51.797,19.721,71.517,0c19.717-19.717,19.717-51.799,0-71.516C109.395,37.907,96.441,32.976,83.494,32.976z"/>
-            </g>
-            <g>
-              <path fill="#F79764" d="M125.354,72.264c-1.956-7.302-5.834-14.006-11.215-19.387c-5.589-5.588-12.57-9.538-20.191-11.422
-                l4.243-17.159c10.745,2.658,20.581,8.218,28.445,16.082c7.572,7.573,13.033,17.017,15.79,27.313L125.354,72.264z"/>
-            </g>
-            <g>
-              <path fill="#E7E7E7" d="M83.494,158.986c-20.159,0-39.109-7.848-53.362-22.102l0,0l0,0c-29.425-29.424-29.425-77.302,0-106.726
-                C44.385,15.905,63.335,8.056,83.494,8.056c20.157,0,39.108,7.85,53.362,22.103c29.424,29.424,29.424,77.302,0,106.726
-                C122.603,151.139,103.651,158.986,83.494,158.986z M83.494,11.27c-19.301,0-37.443,7.515-51.09,21.162
-                c-13.647,13.647-21.163,31.791-21.163,51.09c0,19.299,7.516,37.443,21.163,51.09l0,0c13.647,13.648,31.79,21.162,51.09,21.162
-                c19.299,0,37.443-7.514,51.09-21.162c28.17-28.17,28.17-74.009,0-102.18C120.938,18.785,102.793,11.27,83.494,11.27z"/>
-            </g>
-            <g>
-              <path fill="#FECB7B" d="M83.494,166.219c-22.09,0-42.857-8.604-58.476-24.223C-7.225,109.754-7.225,57.29,25.02,25.046
-                C45.571,4.495,74.72-3.69,103.004,3.149l-4.155,17.179c-22.24-5.376-45.171,1.056-61.332,17.216
-                c-25.352,25.352-25.352,66.603,0,91.956c12.282,12.279,28.608,19.045,45.978,19.045c17.367,0,33.696-6.766,45.978-19.045
-                c16.174-16.176,22.688-40.006,17.001-62.194l17.122-4.389c7.231,28.208-1.056,58.51-21.626,79.079
-                C126.35,157.617,105.583,166.219,83.494,166.219z"/>
-            </g>
-            <g>
-              <path fill="#D84875" d="M83.494,166.219c-22.09,0-42.857-8.604-58.476-24.223C-2.089,114.889-6.913,71.73,13.549,39.373
-                l14.938,9.446c-16.082,25.434-12.285,59.364,9.029,80.681c12.282,12.279,28.608,19.043,45.978,19.043
-                c17.367,0,33.696-6.764,45.978-19.043c16.174-16.176,22.688-40.006,17.001-62.194l17.122-4.389
-                c7.231,28.208-1.056,58.51-21.626,79.079C126.35,157.617,105.583,166.219,83.494,166.219z"/>
-            </g>
-            <g>
-              <path fill="#4FC3CA" d="M83.494,166.219c-22.09,0-42.857-8.604-58.476-24.223c-6.175-6.174-11.299-13.217-15.229-20.93
-                l15.748-8.023c3.086,6.057,7.118,11.594,11.979,16.457c12.282,12.279,28.608,19.043,45.978,19.043
-                c17.367,0,33.696-6.764,45.978-19.043c16.174-16.176,22.688-40.006,17.001-62.194l17.122-4.389
-                c7.231,28.208-1.056,58.51-21.626,79.079C126.35,157.617,105.583,166.219,83.494,166.219z"/>
-            </g>
-          </g>
-          </svg>
-          <div class="percent">
-            <ion-row *ngFor = "let rsKemarin of inflasikemarin">
-                <ion-col>
-                  <b>{{ rsKemarin.besar_inflasi }}%</b>
-                </ion-col>
-                  <ion-col>
-                      
-                  </ion-col>
-                  <ion-col>
+    <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content
+          pullingIcon="arrow-dropdown"
+          pullingText="Pull to refresh"
+          refreshingSpinner="circles"
+          refreshingText="Refreshing...">
+        </ion-refresher-content>
+    </ion-refresher>
+  <div class="graphic">
+      <img src="../assets/imgs/bg-bulanan.png">
+  </div>
   
-                  </ion-col>
-              </ion-row>
-          </div>
-    </div>
-  </ion-col>
-</ion-row>
-<ion-row>
-  <ion-col>
-
-  </ion-col>
-  <ion-col>
-
-  </ion-col>
-  <ion-col>
-    <div class="graph2">
-      <svg version="1.1" id="circle" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-            width="167px" height="167px" viewBox="0 0 167 167" enable-background="new 0 0 167 167" xml:space="preserve">
+      <div>
+        <svg version="1.1" id="biru" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                viewBox="0 0 195 125" enable-background="new 0 0 195 125" xml:space="preserve">
           <g>
-            <circle fill="#E7E7E7" cx="82.377" cy="84.771" r="44.948"/>
-            <g>
-              <path fill="#E7E7E7" d="M83.494,137.279c-13.774,0-27.546-5.242-38.032-15.727c-20.97-20.969-20.97-55.091,0-76.062
-                c20.969-20.97,55.09-20.971,76.062,0c20.97,20.97,20.97,55.093,0,76.062C111.039,132.037,97.267,137.279,83.494,137.279z
-                M83.494,32.976c-12.952,0-25.899,4.928-35.759,14.787c-19.717,19.717-19.717,51.799,0,71.516
-                c19.716,19.717,51.797,19.721,71.517,0c19.717-19.717,19.717-51.799,0-71.516C109.395,37.907,96.441,32.976,83.494,32.976z"/>
-            </g>
-            <g>
-              <path fill="#F79764" d="M125.354,72.264c-1.956-7.302-5.834-14.006-11.215-19.387c-5.589-5.588-12.57-9.538-20.191-11.422
-                l4.243-17.159c10.745,2.658,20.581,8.218,28.445,16.082c7.572,7.573,13.033,17.017,15.79,27.313L125.354,72.264z"/>
-            </g>
-            <g>
-              <path fill="#E7E7E7" d="M83.494,158.986c-20.159,0-39.109-7.848-53.362-22.102l0,0l0,0c-29.425-29.424-29.425-77.302,0-106.726
-                C44.385,15.905,63.335,8.056,83.494,8.056c20.157,0,39.108,7.85,53.362,22.103c29.424,29.424,29.424,77.302,0,106.726
-                C122.603,151.139,103.651,158.986,83.494,158.986z M83.494,11.27c-19.301,0-37.443,7.515-51.09,21.162
-                c-13.647,13.647-21.163,31.791-21.163,51.09c0,19.299,7.516,37.443,21.163,51.09l0,0c13.647,13.648,31.79,21.162,51.09,21.162
-                c19.299,0,37.443-7.514,51.09-21.162c28.17-28.17,28.17-74.009,0-102.18C120.938,18.785,102.793,11.27,83.494,11.27z"/>
-            </g>
-            <g>
-              <path fill="#FECB7B" d="M83.494,166.219c-22.09,0-42.857-8.604-58.476-24.223C-7.225,109.754-7.225,57.29,25.02,25.046
-                C45.571,4.495,74.72-3.69,103.004,3.149l-4.155,17.179c-22.24-5.376-45.171,1.056-61.332,17.216
-                c-25.352,25.352-25.352,66.603,0,91.956c12.282,12.279,28.608,19.045,45.978,19.045c17.367,0,33.696-6.766,45.978-19.045
-                c16.174-16.176,22.688-40.006,17.001-62.194l17.122-4.389c7.231,28.208-1.056,58.51-21.626,79.079
-                C126.35,157.617,105.583,166.219,83.494,166.219z"/>
-            </g>
-            <g>
-              <path fill="#D84875" d="M83.494,166.219c-22.09,0-42.857-8.604-58.476-24.223C-2.089,114.889-6.913,71.73,13.549,39.373
-                l14.938,9.446c-16.082,25.434-12.285,59.364,9.029,80.681c12.282,12.279,28.608,19.043,45.978,19.043
-                c17.367,0,33.696-6.764,45.978-19.043c16.174-16.176,22.688-40.006,17.001-62.194l17.122-4.389
-                c7.231,28.208-1.056,58.51-21.626,79.079C126.35,157.617,105.583,166.219,83.494,166.219z"/>
-            </g>
-            <g>
-              <path fill="#4FC3CA" d="M83.494,166.219c-22.09,0-42.857-8.604-58.476-24.223c-6.175-6.174-11.299-13.217-15.229-20.93
-                l15.748-8.023c3.086,6.057,7.118,11.594,11.979,16.457c12.282,12.279,28.608,19.043,45.978,19.043
-                c17.367,0,33.696-6.764,45.978-19.043c16.174-16.176,22.688-40.006,17.001-62.194l17.122-4.389
-                c7.231,28.208-1.056,58.51-21.626,79.079C126.35,157.617,105.583,166.219,83.494,166.219z"/>
-            </g>
+            <defs>
+              <path id="SVGID_1_" d="M23.563-18.155h149.245c13.119,0,23.754,10.635,23.754,23.754v312.037
+                c0,13.119-10.635,23.754-23.754,23.754H23.563c-13.119,0-23.754-10.635-23.754-23.754V5.599
+                C-0.191-7.521,10.444-18.155,23.563-18.155z"/>
+            </defs>
+            <clipPath id="SVGID_2_">
+              <use xlink:href="#SVGID_1_"  overflow="visible"/>
+            </clipPath>
+            <path opacity="0.8" clip-path="url(#SVGID_2_)" fill="#3880ff" d="M214.36-51.909c0,0,0,134.717,0,135.4c0,12.42-5.037,25.389-16.855,33.266
+              c-20.084,13.389-45.535,5.689-66.791-1.111c-51.454-16.465-106.081-15.59-154.163,8.428c-38.914,19.436,0-3.254,0-3.254V-66.547
+              h237.811L214.36-51.909z"/>
+            
+              <linearGradient id="SVGID_3_" gradientUnits="userSpaceOnUse" x1="-0.3032" y1="-9.3877" x2="219.3486" y2="-184.6481" gradientTransform="matrix(-1 0 0 -1 195.7656 -74.9121)">
+              <stop  offset="0" style="stop-color:#3880ff"/>
+              <stop  offset="0.3037" style="stop-color:#3880ff"/>
+              <stop  offset="0.7915" style="stop-color:#3880ff"/>
+            </linearGradient>
+            <path opacity="0.8" clip-path="url(#SVGID_2_)" fill="url(#SVGID_3_)" d="M211.812,38.927
+              c-0.848,18.328-2.096,38.465-11.949,54.555c-9.58,15.646-25.584,17.205-42.348,16.408c-14.617-0.693-28.945,1.422-42.814,6.051
+              c-14.379,4.799-26.764,9.633-42.327,6.928c-25.09-4.361-46.775-19.719-72.061-23.277c-4.404-0.621-11.908-0.504-11.908,5.652
+              c0-0.006,0-169.775,0-169.775h218.596L211.812,38.927z"/>
           </g>
           </svg>
-          <div class="percent2">
-            <ion-row *ngFor = "let rsSekarang of terkini">
-                <ion-col>
-                  
-                </ion-col>
-                  <ion-col>
-                      
-                  </ion-col>
-                  <ion-col>
-                    <b>{{ rsSekarang.besar_inflasi }}%</b>
-                  </ion-col>
-              </ion-row>
-          </div>
     </div>
-  </ion-col>
+  
+    <ion-button [routerLink]="['/menu/bulanan']">Lainnya</ion-button>
+<ion-row>
+    <div class="graph1">
+      <ion-row>
+        <ion-col>
+            <svg version="1.1" id="graph" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+               viewBox="0 0 105 105" enable-background="new 0 0 105 105" xml:space="preserve" (click)="viewKeterangan(tk)">
+            <circle fill="#117acc" cx="52.5" cy="52.5" r="51.995"/>
+            <circle opacity="0.8" fill="#007acc" cx="52.5" cy="52.5" r="48.145"/>
+            <circle fill="#4085ff" cx="52.5" cy="52.5" r="34.08"/>
+            <circle fill="#4085ff" cx="52.5" cy="52.5" r="31.203"/>
+            </svg>
+        </ion-col>
+            <ion-col>
+              <div  class="test">
+                <div *ngFor = "let rsKemarin of inflasikemarin">
+                  <!-- <svg version="1.1" id="ling" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                        viewBox="0 0 6 6" enable-background="new 0 0 6 6" xml:space="preserve">
+                    <circle fill="#fff" cx="3" cy="3" r="2.963"/>
+                  </svg> -->
+                  <div class="go">Inflasi Bulanan Tertinggi</div>
+                  <div class="subgo">Bulan {{ rsKemarin.nama_bulan }} Tahun {{ rsKemarin.tahun }}</div>
+                </div> 
+              </div> 
+            </ion-col>
+        
+      </ion-row>
+          
+    </div>
 </ion-row>
-
-<ion-button [routerLink]="['/menu/bulanan']">Move to test page</ion-button>
+<ion-row>
+    <div class="percent">
+        <ion-row *ngFor = "let rsKemarin of inflasikemarin">
+            <ion-col>
+              <b (click)="viewKeterangan(tk)">{{ rsKemarin.besar_inflasi }}%</b>
+            </ion-col>
+              <ion-col>
+                  
+              </ion-col>
+          </ion-row>
+      </div>
+</ion-row>
+<!-- <ion-row>
+  <div *ngIf="cek" class="test">
+      <ion-row>
+          <ion-col></ion-col>
+          <ion-col></ion-col>
+          <ion-col>
+            Test
+          </ion-col>
+        </ion-row>
+  </div>
+</ion-row> -->
+<ion-row>
+    <div *ngIf="!cek" class="test">
+        <ion-row>
+            <ion-col></ion-col>
+            <ion-col></ion-col>
+            <ion-col>
+            </ion-col>
+          </ion-row>
+    </div>
+  </ion-row>
+<ion-row>
+    <div class="graph2">
+        <ion-row>
+              <ion-col>
+                  
+                            <!-- <svg version="1.1" id="lingk" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                  viewBox="0 0 6 6" enable-background="new 0 0 6 6" xml:space="preserve">
+                              <circle fill="#037acc" cx="3" cy="3" r="2.963"/>
+                            </svg> -->
+                            <!-- <div class="going">Inflasi Bulanan Saat Ini</div> -->
+           
+              </ion-col>
+          <ion-col>
+                    <svg version="1.1" id="circle" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                    viewBox="0 0 120 110" enable-background="new 0 0 120 110" xml:space="preserve" (click)="viewSekarang(sk)">
+                      <g>
+                        <g>
+                          <path fill="none" stroke="#00A7C7" stroke-width="10.5" stroke-miterlimit="10" d="M22.709,14.069
+                            c-20.5,20.497-20.502,53.732-0.003,74.23c20.5,20.501,53.732,20.499,74.234,0c20.495-20.498,20.5-53.733,0-74.231"/>
+                        </g>
+                      </g>
+                      <g>
+                      </g>
+                      <g>
+                        
+                          <linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="-104.0098" y1="186.5439" x2="-104.0098" y2="294.3521" gradientTransform="matrix(-0.7071 0.7071 0.4871 0.4871 -102.9648 35.953)">
+                          <stop  offset="0" style="stop-color:#000000"/>
+                          <stop  offset="1" style="stop-color:#FFFFFF;stop-opacity:0"/>
+                        </linearGradient>
+                        <polygon opacity="0.5" fill="url(#SVGID_1_)" points="93.843,17.493 148.677,72.792 81.022,141.023 26.187,85.721 	"/>
+                        <linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="11.8691" y1="51.6074" x2="108.3057" y2="51.6074">
+                          <stop  offset="0" style="stop-color:#FFFFFF"/>
+                          <stop  offset="1" style="stop-color:#E6E6E5"/>
+                        </linearGradient>
+                        <path fill="none" stroke="url(#SVGID_2_)" stroke-width="0.7586" stroke-miterlimit="10" d="M93.915,17.492
+                          c18.684,18.841,18.68,49.387,0,68.229c-18.682,18.841-48.972,18.843-67.655,0C7.577,66.879,7.579,36.331,26.262,17.493
+                          C44.943-1.347,75.233-1.348,93.915,17.492z"/>
+                        <g>
+                          <g>
+                            <g>
+                              <g>
+                                <linearGradient id="SVGID_3_" gradientUnits="userSpaceOnUse" x1="27.9487" y1="19.4673" x2="92.2264" y2="83.7449">
+                                  <stop  offset="0" style="stop-color:#037D95"/>
+                                  <stop  offset="1" style="stop-color:#00A7C7"/>
+                                </linearGradient>
+                                <path fill="url(#SVGID_3_)" d="M14.828,51.607c0-25.213,20.263-45.642,45.259-45.642c24.996,0,45.26,20.429,45.26,45.642
+                                  c0,25.205-20.264,45.64-45.26,45.64C35.09,97.247,14.828,76.813,14.828,51.607z"/>
+                              </g>
+                            </g>
+                            <defs>
+                              <filter id="Adobe_OpacityMaskFilter" filterUnits="userSpaceOnUse" x="14.828" y="5.966" width="90.519" height="91.281">
+                                
+                                  <feColorMatrix  type="matrix" values="-1 0 0 0 1  0 -1 0 0 1  0 0 -1 0 1  0 0 0 1 0" color-interpolation-filters="sRGB" result="source"/>
+                              </filter>
+                            </defs>
+                            <mask maskUnits="userSpaceOnUse" x="14.828" y="5.966" width="90.519" height="91.281" id="SVGID_4_">
+                              <g filter="url(#Adobe_OpacityMaskFilter)">
+                              </g>
+                            </mask>
+                            <g opacity="0.2" mask="url(#SVGID_4_)">
+                              <g>
+                                <path fill="#010101" d="M14.828,51.607c0-25.213,20.263-45.642,45.259-45.642c24.996,0,45.26,20.429,45.26,45.642
+                                  c0,25.205-20.264,45.64-45.26,45.64C35.09,97.247,14.828,76.813,14.828,51.607z"/>
+                              </g>
+                            </g>
+                          </g>
+                        </g>
+                        <g opacity="0.2">
+                        </g>
+                        <linearGradient id="SVGID_5_" gradientUnits="userSpaceOnUse" x1="32.3633" y1="23.8799" x2="87.8138" y2="79.3304">
+                          <stop  offset="0" style="stop-color:#FFFFFF"/>
+                          <stop  offset="1" style="stop-color:#E6E6E5"/>
+                        </linearGradient>
+                        <path fill="none" stroke="url(#SVGID_5_)" stroke-width="1.5172" stroke-miterlimit="10" d="M21.799,51.606
+                          c0-21.33,17.142-38.612,38.289-38.612c21.145,0,38.29,17.282,38.29,38.612c0,21.323-17.145,38.61-38.29,38.61
+                          C38.941,90.217,21.799,72.93,21.799,51.606z"/>
+                        <linearGradient id="SVGID_6_" gradientUnits="userSpaceOnUse" x1="92.8799" y1="18.8169" x2="25.883" y2="85.8138">
+                          <stop  offset="0" style="stop-color:#FFFFFF"/>
+                          <stop  offset="1" style="stop-color:#E6E6E5"/>
+                        </linearGradient>
+                        <path fill="url(#SVGID_6_)" d="M93.915,17.492C75.233-1.348,44.943-1.347,26.262,17.493C7.579,36.331,7.577,66.879,26.26,85.721
+                          c18.684,18.843,48.974,18.841,67.655,0C112.595,66.879,112.599,36.333,93.915,17.492z M60.088,90.217
+                          c-21.147,0-38.289-17.287-38.289-38.61c0-21.33,17.142-38.612,38.289-38.612c21.145,0,38.29,17.282,38.29,38.612
+                          C98.378,72.93,81.233,90.217,60.088,90.217z"/>
+                      </g>
+                      </svg>
+          </ion-col>
+        </ion-row>
+      </div>      
+</ion-row>
+<ion-row>
+    <div class="percent2">
+        <ion-row *ngFor = "let rsSekarang of terkini">
+              <ion-col>
+                  
+              </ion-col>
+              <ion-col>
+                <b >{{ rsSekarang.besar_inflasi }}%</b>
+              </ion-col>
+          </ion-row>
+      </div>
+</ion-row>
+<div>
+  <svg version="1.1" id="desain_bg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+   viewBox="0 0 220 180" enable-background="new 0 0 220 180" xml:space="preserve">
+<circle opacity="0.1" fill="#fff"   cx="169.407" cy="99.576" r="99.576"/>
+</svg>
+</div>
+<div>
+  <div>
+      <p>Inflasi Bulanan Saat Ini</p>
+  </div>
+  <svg version="1.1" id="desain_bg2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	  viewBox="0 0 220 180" enable-background="new 0 0 220 180" xml:space="preserve">
+<circle opacity="0.1" fill="#3880ff"  cx="72.094" cy="109.89" r="109.889"/>
+</svg>
+</div>
+<div class="bawah">
+    <svg version="1.1" id="bawahgan" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+       viewBox="0 0 190 100" enable-background="new 0 0 190 100" xml:space="preserve">
+      <g>
+        <g>
+          <g>
+            
+              <linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="38.7148" y1="-74.7041" x2="178.0932" y2="-251.8657" gradientTransform="matrix(-1 0 0 -1 191.1104 -47.1113)">
+              <stop  offset="0" style="stop-color:#EB5F85"/>
+              <stop  offset="0.3913" style="stop-color:#DE5186"/>
+              <stop  offset="0.5413" style="stop-color:#D94986"/>
+            </linearGradient>
+            <path fill="url(#SVGID_1_)" d="M20.21,212.859h149.245c13.119,0,23.754-10.635,23.754-23.754V48.472V30.866V5.337
+              c-19.813,12.829-34.844,2.061-55.904-4.679C119.693-4.977,94.833,27.755,64.664,15.36C40.81,5.56,19.069-0.092-3.543,4.188
+              v38.543v18.64v127.734C-3.543,202.225,7.091,212.859,20.21,212.859z"/>
+            
+              <linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="39.8296" y1="-95.3921" x2="171.7051" y2="-263.017" gradientTransform="matrix(-1 0 0 -1 191.1104 -47.1113)">
+              <stop  offset="0" style="stop-color:#EB5F85"/>
+              <stop  offset="0.2122" style="stop-color:#DF5986"/>
+              <stop  offset="0.6232" style="stop-color:#C14B86"/>
+              <stop  offset="0.6463" style="stop-color:#BF4A86"/>
+            </linearGradient>
+            <path opacity="0.87" fill="url(#SVGID_2_)" d="M20.21,212.859h149.245c13.119,0,23.754-10.635,23.754-23.754V48.472V30.866
+              c-6.547-3.528-13.463-4.538-20.004-0.447c-22.922,14.34-26.691,48.736-49.309,27.091C98.449,33.159,78.521,22.187,51.944,47.451
+              c-29.009,27.577-41.139,14.877-49.921,2.5c-1.201-1.692-3.112-4.267-5.566-7.22v18.64v127.734
+              C-3.543,202.225,7.091,212.859,20.21,212.859z"/>
+            
+              <linearGradient id="SVGID_3_" gradientUnits="userSpaceOnUse" x1="42.1938" y1="-108.1406" x2="190.8311" y2="-297.071" gradientTransform="matrix(-1 0 0 -1 191.1104 -47.1113)">
+              <stop  offset="0" style="stop-color:#EA7586"/>
+              <stop  offset="0.2823" style="stop-color:#DE6986"/>
+              <stop  offset="0.8227" style="stop-color:#BF4A86"/>
+            </linearGradient>
+            <path opacity="0.86" fill="url(#SVGID_3_)" d="M135.42,69.947c-29.025-19.954-48.28-16.73-78.362,4.238
+              c-30.083,20.967-52.25-0.547-58.6-10.389c-0.475-0.736-1.033-1.555-1.667-2.426v127.734c0,13.119,10.635,23.754,23.754,23.754
+              h149.244c13.119,0,23.754-10.635,23.754-23.754V48.472C172.695,63.293,163.189,89.041,135.42,69.947z"/>
+          </g>
+        </g>
+      </g>
+      </svg> 
+</div>
 </ion-content>

@@ -11,3 +11,36 @@ ion-toolbar.scrollable-segments {
 	  }
 	}
 }
+
+
+.bgatas #atas{
+	width: 100%;
+	margin: 0 !important;
+	position: relative;
+}
+
+.csstahun{
+	position:absolute;
+	top: 1%;
+	align: right;
+	color: #fff;
+}
+
+ion-content .judul{
+	top: 25%;
+	position :absolute;
+	color: white;
+	background: #3880ff;
+	width:100%;
+	padding: 5px;
+	margin-bottom:5% !important;
+}
+
+ion-grid .isi{
+	position: relative;
+	padding-top: 30px;
+}
+
+.header-md::after{
+	display: none;
+}
